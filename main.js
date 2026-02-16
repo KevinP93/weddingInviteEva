@@ -54,7 +54,7 @@ const translations = {
         restaurantName: "Les Salons d'Elyssa",
         restaurantAddress: "4 rue Louis Braille 77178 Saint-Pathus",
         reception: "Réception",
-        receptionTime: "18h00",
+        receptionTime: "20h00",
         rsvpForm: "Formulaire RSVP",
         firstName: "Prénom",
         lastName: "Nom de famille",
@@ -98,7 +98,7 @@ const translations = {
         restaurantName: "Les Salons d'Elyssa",
         restaurantAddress: "4 rue Louis Braille 77178 Saint-Pathus",
         reception: "Recepção",
-        receptionTime: "18:00",
+        receptionTime: "20:00",
         rsvpForm: "Formulário RSVP",
         firstName: "Primeiro Nome",
         lastName: "Sobrenome",
@@ -407,6 +407,5 @@ function hideModal(modal) {
         updateBodyScrollLock();
     }, 300);
 }
-
 
 
