@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_self">
+    <title>Invitation de mariage – Andre & Eva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex flex-col">
+    <!-- Envelope Animation -->
+    <div id="envelopeScreen" class="fixed inset-0 z-40 flex flex-col items-center justify-center">
+        <img
+            src="/assets/weddingInvite.png"
+            alt="Invitation de mariage"
+            class="w-80 mb-6 rounded-3xl shadow-2xl object-cover floating" />
+        <div class="card-envelope w-full max-w-md mx-auto relative">
+            <i class="fa-solid fa-envelope-open pastel-text floating"></i>
+            <h2 class="text-3xl font-bold mb-3" data-lang-key="openInvitation">Open Invitation</h2>
+            <p class="mb-6 text-lg opacity-80 max-w-prose mx-auto text-justify sm:text-justify" data-lang-key="clickToOpen">Click below to open the wedding invitation</p>
+            <button id="openEnvelopeBtn" class="btn-pastel px-10 py-3 rounded-full text-lg font-medium shadow-lg">
+                <i class="fas fa-heart mr-2"></i>
+                <span data-lang-key="open">Open</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Main Content -->
+    <div id="mainContent" class="hidden">
+        <!-- Header -->
+        <header class="py-6 px-4 md:px-8">
+            <div class="container mx-auto flex justify-center items-center">
+                <h1 class="text-2xl md:text-3xl font-bold ">Andre & Eva</h1>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section id="heroSection" class="relative py-16 md:py-24">
+            <img src="/assets/table.png"
+         alt="Floral background"
+         class="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none" />
+            <div class="relative z-10 container mx-auto px-4 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-4" data-lang-key="saveTheDate">Save the Date</h2>
+                    <div class="divider w-24 h-1 mx-auto mb-8"></div>
+                    <h3 class="text-2xl md:text-3xl font-medium mb-8" data-lang-key="wereGettingMarried">We're getting married!</h3>
+                    <p class="text-xl mb-4" data-lang-key="weddingDate">08 mai 2026</p>
+                    <p class="theme-note mb-8">Thème couleur : Bordeaux / Champagne</p>
+                    <div class="flex justify-center space-x-4 mb-12">
+                        <div class="text-center">
+                            <div id="daysCounter" class="text-3xl font-bold ">0</div>
+                            <div class="text-sm" data-lang-key="days">Days</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="hoursCounter" class="text-3xl font-bold ">0</div>
+                            <div class="text-sm" data-lang-key="hours">Hours</div>
+                        </div>
+                        <div class="text-center">
+                            <div id="minutesCounter" class="text-3xl font-bold ">0</div>
+                            <div class="text-sm" data-lang-key="minutes">Minutes</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button id="churchBtn" class="btn-outline-pastel px-6 py-3 rounded-full">
+                            <i class="fas fa-church mr-2"></i>
+                            <span data-lang-key="churchLocation">Church Location</span>
+                        </button>
+                        <button id="restaurantBtn" class="btn-outline-pastel px-6 py-3 rounded-full">
+                            <i class="fas fa-utensils mr-2"></i>
+                            <span data-lang-key="receptionLocation">Reception Location</span>
+                        </button>
+                        <button id="rsvpBtn" class="btn-pastel px-6 py-3 rounded-full">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span data-lang-key="rsvp">RSVP</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-fade absolute bottom-0 left-0 right-0 h-16"></div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section id="scheduleSection" class="py-16 md:py-24">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4" data-lang-key="weddingSchedule">Wedding Schedule</h2>
+                    <div class="divider w-24 h-1 mx-auto"></div>
+                </div>
+                <div class="schedule-shell max-w-5xl mx-auto">
+                    <div class="schedule-spine" aria-hidden="true"></div>
+
+                    <article class="schedule-event schedule-event-left" data-step="1">
+                        <span class="schedule-node" aria-hidden="true"></span>
+                        <div class="schedule-card">
+                            <div class="schedule-card-top">
+                                <span class="schedule-icon"><i class="fas fa-church"></i></span>
+                                <span class="schedule-time-pill" data-lang-key="ceremonyTime">13h30</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2" data-lang-key="ceremony">Ceremony</h3>
+                            <p class="schedule-place" data-lang-key="churchName">Église</p>
+                            <p class="schedule-address" data-lang-key="churchAddress">26 avenue Jacques Anquetil 95190 Goussainville</p>
+                        </div>
+                    </article>
+
+                    <article class="schedule-event schedule-event-right" data-step="2">
+                        <span class="schedule-node" aria-hidden="true"></span>
+                        <div class="schedule-card">
+                            <div class="schedule-card-top">
+                                <span class="schedule-icon"><i class="fas fa-wine-glass"></i></span>
+                                <span class="schedule-time-pill" data-lang-key="cocktailTime">18h00</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2" data-lang-key="cocktailHour">Vin d'honneur</h3>
+                            <p class="schedule-place" data-lang-key="restaurantName">Les Salons d'Elyssa</p>
+                            <p class="schedule-address" data-lang-key="restaurantAddress">4 rue Louis Braille 77178 Saint-Pathus</p>
+                        </div>
+                    </article>
+
+                    <article class="schedule-event schedule-event-left" data-step="3">
+                        <span class="schedule-node" aria-hidden="true"></span>
+                        <div class="schedule-card">
+                            <div class="schedule-card-top">
+                                <span class="schedule-icon"><i class="fas fa-champagne-glasses"></i></span>
+                                <span class="schedule-time-pill" data-lang-key="receptionTime">18h00</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2" data-lang-key="reception">Reception</h3>
+                            <p class="schedule-place" data-lang-key="restaurantName">Les Salons d'Elyssa</p>
+                            <p class="schedule-address" data-lang-key="restaurantAddress">4 rue Louis Braille 77178 Saint-Pathus</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- RSVP Modal -->
+        <div id="rsvpModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 opacity-0">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold" data-lang-key="rsvpForm">RSVP Form</h3>
+                        <button id="closeRsvpModal" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="rsvpForm" class="space-y-4">
+                        <div>
+                            <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1" data-lang-key="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1" data-lang-key="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1" data-lang-key="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required 
+                                   class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="attendees" class="block text-sm font-medium text-gray-700 mb-1" data-lang-key="numberOfAttendees">Number of Attendees</label>
+                            <select id="attendees" name="attendees" required 
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none">
+                                <option value="" disabled selected data-lang-key="selectNumber">Select number</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                        </div>
+                        <div id="additionalGuestsContainer" class="hidden">
+                            <label for="additionalGuests" class="block text-sm font-medium text-gray-700 mb-1" data-lang-key="additionalGuestsLabel">Noms des invités supplémentaires</label>
+                            <textarea id="additionalGuests" name="additionalGuests" rows="2"
+                                      class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none"
+                                      placeholder="Ex: Marie Dupont, Jean Martin"></textarea>
+                        </div>
+                        <div class="pt-4 space-y-3">
+                            <button type="submit" class="btn-pastel w-full py-3 rounded-md">
+                                <span data-lang-key="submitRsvp">Submit RSVP</span>
+                            </button>
+                            <button type="button" id="declineButton" class="btn-outline-pastel w-full py-3 rounded-md">
+                                <span data-lang-key="declineRsvp">Je ne viens pas</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 p-6 text-center">
+                <div class="w-16 h-16 success-icon-wrap rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-check text-3xl success-icon"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2" data-lang-key="thankYou">Thank You!</h3>
+                <p id="successMessage" class="text-gray-600 mb-6" data-lang-key="rsvpConfirmed">
+                    Your RSVP has been confirmed. We look forward to celebrating with you!
+                </p>
+                <button id="closeSuccessModal" class="btn-pastel px-6 py-2 rounded-md">
+                    <span data-lang-key="close">Close</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="py-8 px-4">
+            <div class="container mx-auto text-center">
+                <p class="mb-2 text-lg" data-lang-key="thankYouForCelebrating">
+                    <i class="fa-solid fa-heart footer-heart"></i>
+                    Thank you for celebrating with us!
+                </p>
+            </div>
+        </footer>
+    </div>
+    <script src="main.js" defer></script>
+</body>
+</html>
