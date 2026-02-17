@@ -41,7 +41,7 @@ const translations = {
         rsvp: "Confirmation de présence",
         theCouple: "Le Couple",
         theGroom: "Le Marié",
-        kevinBio: "Andre est impatient de celebrer cette belle journee avec ses proches.",
+        kevinBio: "Wendy est impatient de celebrer cette belle journee avec ses proches.",
         theBride: "La Mariée",
         gabriellaBio: "Eva Nwge a hâte de partager ce moment unique avec sa famille et ses amis.",
         weddingSchedule: "Programme du Mariage",
@@ -85,7 +85,7 @@ const translations = {
         rsvp: "Confirmar Presença",
         theCouple: "O Casal",
         theGroom: "O Noivo",
-        kevinBio: "Andre mal pode esperar para celebrar este dia especial com todos.",
+        kevinBio: "Wendy mal pode esperar para celebrar este dia especial com todos.",
         theBride: "A Noiva",
         gabriellaBio: "Eva Nwge está ansiosa para viver este momento inesquecível com a família e os amigos.",
         weddingSchedule: "Programa do Casamento",
@@ -407,5 +407,4 @@ function hideModal(modal) {
         updateBodyScrollLock();
     }, 300);
 }
-
 
