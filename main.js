@@ -119,9 +119,9 @@ const translations = {
 
 let currentLanguage = 'fr';
 
-const EMAILJS_PUBLIC_KEY = 'oonFNHC8cWMgY602n';
-const EMAILJS_SERVICE_ID = 'service_6cg8nrq';
-const EMAILJS_TEMPLATE_ID = 'template_x9zsf4p';
+const EMAILJS_PUBLIC_KEY = 'n2_DD4BkZVCCHEmjP';
+const EMAILJS_SERVICE_ID = 'service_bfhi5oi';
+const EMAILJS_TEMPLATE_ID = 'template_kx4e3pd';
 const RSVP_EMAIL = 'ladyva95@hotmail.fr';
 const RSVP_CONFIRM_SUBJECT = '[ Réponse mariage POSITIVE]';
 const RSVP_DECLINE_SUBJECT = '[ Réponse mariage NEGATIVE ]';

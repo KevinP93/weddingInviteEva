@@ -159,6 +159,25 @@ header {
     letter-spacing: 0.02em;
 }
 
+.rsvp-deadline-note {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.72rem 1.1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(104, 34, 56, 0.28);
+    background: linear-gradient(140deg, rgba(255, 250, 240, 0.93), rgba(248, 238, 219, 0.9));
+    color: var(--bordeaux-800);
+    font-size: 0.97rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    box-shadow: 0 10px 20px rgba(77, 20, 40, 0.12);
+}
+
+.rsvp-deadline-note i {
+    color: var(--bordeaux-600);
+}
+
 #scheduleSection {
     position: relative;
     background:
@@ -531,6 +550,11 @@ footer .footer-heart {
 
     .theme-note {
         font-size: 0.92rem;
+    }
+
+    .rsvp-deadline-note {
+        font-size: 0.9rem;
+        padding: 0.66rem 0.95rem;
     }
 
     #mainContent .btn-outline-pastel,
