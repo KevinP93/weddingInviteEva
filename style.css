@@ -316,6 +316,132 @@ header {
     }
 }
 
+#blessingSection {
+    position: relative;
+    background:
+        radial-gradient(circle at 88% 15%, rgba(255, 255, 255, 0.62), transparent 40%),
+        linear-gradient(180deg, #f8eedb, #fdf6e9);
+    overflow: hidden;
+}
+
+#blessingSection::before,
+#blessingSection::after {
+    content: '';
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#blessingSection::before {
+    width: 18rem;
+    height: 18rem;
+    top: -8rem;
+    left: -6rem;
+    background: radial-gradient(circle, rgba(127, 44, 70, 0.12), rgba(127, 44, 70, 0));
+}
+
+#blessingSection::after {
+    width: 15rem;
+    height: 15rem;
+    bottom: -7rem;
+    right: -4rem;
+    background: radial-gradient(circle, rgba(221, 199, 157, 0.35), rgba(221, 199, 157, 0));
+}
+
+#blessingSection .container {
+    position: relative;
+    z-index: 1;
+}
+
+.blessing-intro {
+    color: var(--muted);
+    font-size: 1.03rem;
+    line-height: 1.6;
+}
+
+.blessing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+}
+
+.blessing-card {
+    position: relative;
+    padding: 1.7rem 1.5rem 1.45rem;
+    border-radius: 1.4rem;
+    border: 1px solid rgba(104, 34, 56, 0.2);
+    background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.86), rgba(255, 250, 240, 0.9));
+    box-shadow:
+        0 10px 24px rgba(36, 9, 19, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.62);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    animation: blessingReveal 0.6s ease both;
+}
+
+.blessing-card:nth-child(2) {
+    animation-delay: 0.12s;
+}
+
+.blessing-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 16px 30px rgba(36, 9, 19, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.blessing-card::before {
+    content: '“';
+    position: absolute;
+    right: 1rem;
+    top: 0.2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: rgba(127, 44, 70, 0.16);
+}
+
+.blessing-icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    margin-bottom: 0.9rem;
+    color: var(--bordeaux-700);
+    background: linear-gradient(140deg, var(--champagne-100), var(--champagne-200));
+    border: 1px solid rgba(104, 34, 56, 0.16);
+}
+
+.blessing-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    line-height: 1.55;
+    color: var(--bordeaux-800);
+    margin-bottom: 0.9rem;
+}
+
+.blessing-reference {
+    color: var(--bordeaux-700);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+}
+
+@keyframes blessingReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 #rsvpModal > div > div,
 #successModal > div {
     border: 1px solid rgba(104, 34, 56, 0.18);
@@ -429,5 +555,17 @@ footer .footer-heart {
     .schedule-event-right .schedule-node {
         left: 0.56rem;
         right: auto;
+    }
+
+    .blessing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .blessing-card {
+        padding: 1.4rem 1.15rem 1.25rem;
+    }
+
+    .blessing-quote {
+        font-size: 1.12rem;
     }
 }
