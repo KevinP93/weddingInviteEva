@@ -39,6 +39,9 @@ const translations = {
         churchLocation: "Emplacement de l'église",
         receptionLocation: "Emplacement de la réception",
         rsvp: "Confirmation de présence",
+        rsvpClosed: "Confirmations clôturées",
+        rsvpClosedNotice: "Les réponses étaient attendues avant le 15 mars 2026. Les confirmations sont maintenant clôturées.",
+        alcoholNotice: "L'alcool n'est pas fourni par les mariés.",
         theCouple: "Le Couple",
         theGroom: "Le Marié",
         kevinBio: "Wendy est impatient de celebrer cette belle journee avec ses proches.",
@@ -83,6 +86,9 @@ const translations = {
         churchLocation: "Local da Cerimônia",
         receptionLocation: "Local da Recepção",
         rsvp: "Confirmar Presença",
+        rsvpClosed: "Confirmações encerradas",
+        rsvpClosedNotice: "As respostas eram esperadas até 15 de março de 2026. As confirmações estão encerradas.",
+        alcoholNotice: "As bebidas alcoólicas não são fornecidas pelos noivos.",
         theCouple: "O Casal",
         theGroom: "O Noivo",
         kevinBio: "Wendy mal pode esperar para celebrar este dia especial com todos.",
@@ -125,6 +131,7 @@ const EMAILJS_TEMPLATE_ID = 'template_kx4e3pd';
 const RSVP_EMAIL = 'ladyva95@hotmail.fr';
 const RSVP_CONFIRM_SUBJECT = '[ Réponse mariage POSITIVE]';
 const RSVP_DECLINE_SUBJECT = '[ Réponse mariage NEGATIVE ]';
+const RSVP_IS_CLOSED = true;
 
 // DOM Elements
 const envelopeScreen = document.getElementById('envelopeScreen');
@@ -204,14 +211,22 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // RSVP modal
-    rsvpBtn.addEventListener('click', () => {
-        showModal(rsvpModal);
-    });
+    if (rsvpBtn) {
+        rsvpBtn.disabled = RSVP_IS_CLOSED;
+        rsvpBtn.setAttribute('aria-disabled', RSVP_IS_CLOSED ? 'true' : 'false');
 
-    closeRsvpModal.addEventListener('click', () => {
-        hideModal(rsvpModal);
-    });
+        if (!RSVP_IS_CLOSED) {
+            rsvpBtn.addEventListener('click', () => {
+                showModal(rsvpModal);
+            });
+        }
+    }
+
+    if (closeRsvpModal) {
+        closeRsvpModal.addEventListener('click', () => {
+            hideModal(rsvpModal);
+        });
+    }
 
     if (attendeesSelect) {
         attendeesSelect.addEventListener('change', handleAttendeesChange);
@@ -220,6 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // RSVP form submission
     const handleRsvpSubmission = async (declined) => {
+        if (RSVP_IS_CLOSED) {
+            return;
+        }
+
         const formData = new FormData(rsvpForm);
         const firstName = (formData.get('firstName') || '').trim();
         const lastName = (formData.get('lastName') || '').trim();
@@ -407,4 +426,3 @@ function hideModal(modal) {
         updateBodyScrollLock();
     }, 300);
 }
-

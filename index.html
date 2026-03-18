@@ -77,15 +77,21 @@
                             <i class="fas fa-utensils mr-2"></i>
                             <span data-lang-key="receptionLocation">Reception Location</span>
                         </button>
-                        <button id="rsvpBtn" class="btn-pastel px-6 py-3 rounded-full">
+                        <button id="rsvpBtn" class="btn-pastel px-6 py-3 rounded-full" disabled aria-disabled="true">
                             <i class="fas fa-envelope mr-2"></i>
-                            <span data-lang-key="rsvp">RSVP</span>
+                            <span data-lang-key="rsvpClosed">RSVP Closed</span>
                         </button>
                     </div>
-                    <p class="rsvp-deadline-note max-w-2xl mx-auto">
-                        <i class="fa-solid fa-calendar-check mr-2" aria-hidden="true"></i>
-                        Merci de nous faire parvenir votre réponse au plus tard le 15 mars 2026.
-                    </p>
+                    <div class="hero-notes max-w-2xl mx-auto">
+                        <p class="rsvp-deadline-note">
+                            <i class="fa-solid fa-lock mr-2" aria-hidden="true"></i>
+                            <span data-lang-key="rsvpClosedNotice">Les réponses étaient attendues avant le 15 mars 2026. Les confirmations sont maintenant clôturées.</span>
+                        </p>
+                        <p class="event-info-note">
+                            <i class="fa-solid fa-wine-glass-empty mr-2" aria-hidden="true"></i>
+                            <span data-lang-key="alcoholNotice">L'alcool n'est pas fourni par les mariés.</span>
+                        </p>
+                    </div>
                 </div>
             </div>
             <div class="hero-fade absolute bottom-0 left-0 right-0 h-16"></div>
